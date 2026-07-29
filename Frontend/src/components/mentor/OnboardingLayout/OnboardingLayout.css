@@ -1,0 +1,80 @@
+
+.onboarding-container{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#F8FAFF;
+
+    padding:24px;
+
+    font-family:system-ui,sans-serif;
+
+}
+
+.onboarding-card{
+
+    width:100%;
+
+    max-width:430px;
+
+    background:#FFFFFF;
+
+    border-radius:18px;
+
+    padding:32px 24px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+}
+
+.onboarding-avatar{
+
+    width:90px;
+
+    height:90px;
+
+    display:block;
+
+    margin:0 auto 18px;
+
+}
+
+.onboarding-title{
+
+    color:#23395B;
+
+    text-align:center;
+
+    font-size:30px;
+
+    margin-bottom:18px;
+
+}
+
+.onboarding-description{
+
+    color:#4B5563;
+
+    text-align:center;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+.onboarding-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}

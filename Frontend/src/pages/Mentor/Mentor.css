@@ -1,0 +1,91 @@
+
+
+.mentor-container {
+  min-height: 100vh;
+  background-color: #F8FAFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  font-family: system-ui, sans-serif;
+}
+
+.mentor-card {
+  width: 100%;
+  max-width: 400px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 30px 28px 34px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.mentor-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 18px rgba(38, 198, 218, 0.28);
+}
+
+.mentor-title {
+  margin: 0;
+  color: #23395B;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.mentor-subtitle {
+  margin-top: 14px;
+  margin-bottom: 32px;
+  color: #23395B;
+  font-size: 27px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.mentor-text {
+  color: #4B5563;
+  font-size: 16px;
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+
+.mentor-question {
+  margin-top: 34px;
+  margin-bottom: 20px;
+  color: #23395B;
+  font-size: 24px;
+  font-weight: 700;
+}
+.primary-button {
+  margin-top: 8px;
+}
+
+
+
+@media (max-width: 480px) {
+
+  .mentor-card {
+    padding: 28px 22px 30px;
+  }
+
+  .mentor-avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .mentor-title {
+    font-size: 32px;
+  }
+
+  .mentor-subtitle {
+    font-size: 24px;
+  }
+
+  .mentor-text {
+    font-size: 15px;
+  }
+
+}

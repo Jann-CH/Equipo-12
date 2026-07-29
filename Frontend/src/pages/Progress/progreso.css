@@ -1,0 +1,352 @@
+/* --- CONFIGURACIÓN GENERAL DE LA PÁGINA --- */
+.progreso-pagina-contenedor {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+.seccion-progreso {
+  margin-bottom: 24px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.seccion-titulo {
+  font-size: 1.5rem;
+  color: #23395B;
+  margin-bottom: 4px;
+}
+
+.seccion-titulo-bloque {
+  font-size: 1.5rem;
+  color: #23395B;
+  margin-top: 0;
+  margin-bottom: 16px; /* Espacio limpio antes de que empiecen las tarjetas */
+  font-weight: 600;
+}
+
+.seccion-subtitulo {
+  font-size: 0.9rem;
+  color: #131212;
+  margin-bottom: 20px;
+}
+
+/* --- ENCABEZADO DE LA PÁGINA (CON AVATAR AL LADO) --- */
+.progreso-encabezado-pagina {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #23395B;
+  padding: 24px 8px;
+  background-color: transparent;
+  border-bottom: none;
+  width: 100%;
+  box-sizing: border-box;
+  }
+
+.progreso-titulos-bloque {
+  display: flex;
+  flex-direction: column;
+  color: #23395B;
+  gap: 8px;              /* Fuerza el texto a alinearse a la izquierda */
+  
+}
+
+.progreso-titulo-principal {
+  font-size: 36px;
+  font-weight: 700;
+  color: #23395B;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.progreso-descripcion-principal {
+  font-size: 16px;
+  color: #777777;
+  margin: 0;
+}
+
+/* Contenedor del grupo del Avatar */
+.progreso-avatar-encabezado {
+  display: flex;
+  align-items: center;
+  /* gap: 15px; */
+}
+
+/* Burbuja de Diálogo modificada para apuntar a la izquierda */
+.avatar-burbuja-mensaje {
+  background-color: #f3e8ff;
+  border: 1px solid #e9d5ff;
+  padding: 12px 20px;
+  border-radius: 16px;
+  position: relative;
+  max-width: 280px; /* Un poco más estrecha para encajar mejor al lado del título */
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(107, 33, 168, 0.04);
+}
+
+.avatar-burbuja-mensaje p {
+  margin: 0;
+  color: #6b21a8;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+/* Flechita de la burbuja apuntando hacia la derecha (hacia el círculo del avatar) */
+.avatar-burbuja-mensaje::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -10px; /* La mueve al borde derecho */
+  transform: translateY(-50%);
+  border-width: 10px 0 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent #f3e8ff;
+  display: block;
+  width: 0;
+}
+
+/* Círculo del Avatar */
+
+
+.avatar-nova-img {
+  width: 100%;   
+  height: 100%;
+  object-fit: cover;
+   /* Evita espacios extraños en línea debajo de la imagen */
+}
+
+
+
+
+
+/* .avatar-circulo-temporal span {
+  font-size: 2.2rem;
+  line-height: 1;
+  display: block;
+} */
+
+/* --- DISEÑO RESPONSIVO (MÓVILES) --- */
+@media (max-width: 768px) {
+  .progreso-encabezado-pagina {
+    flex-direction: column;
+    align-items: flex-start; /* Se apilan verticalmente en celular */
+    gap: 20px;
+  }
+
+  .progreso-avatar-encabezado {
+    width: 100%;
+    justify-content: space-between; /* El avatar se acomoda bien en pantallas chicas */
+    flex-direction: row-reverse; /* Opción estética: avatar primero, burbuja después en móvil */
+  }
+
+  /* Cambiamos la flecha para que apunte hacia arriba en pantallas pequeñas si se apilan */
+  .avatar-burbuja-mensaje::after {
+    display: none; /* Simplificamos en móvil eliminando la flecha lateral para evitar desajustes */
+  }
+
+  .progreso-titulo-principal {
+    font-size: 1.8rem;
+  }
+}
+
+/* --- NUEVA ESTRUCTURA DEL GRÁFICO CON ESCALA --- */
+.grafico-contenedor-global {
+  display: flex;
+  gap: 12px;
+  height: 220px;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+/* Escala Lateral (Eje Y) */
+.grafico-escala-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 160px; /* Alineado con la altura del wrapper de las barras */
+  padding-bottom: 24px; /* Compensación de la etiqueta del día */
+  font-size: 0.8rem;
+  color: #9ca3af;
+  text-align: right;
+  width: 25px;
+}
+
+/* Contenedor de las barras (Ajustado) */
+.grafico-barras-contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex: 1;
+  height: 100%;
+  /* Líneas horizontales de guía usando un gradiente */
+  background-image: linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  background-size: 100% 53px; /* Divide el espacio visualmente */
+}
+
+.grafico-columna {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.grafico-barra-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 160px; /* Subimos un poco para dar más holgura */
+  width: 100%;
+  position: relative;
+}
+
+.grafico-barra-valor {
+  font-size: 0.75rem;
+  color: #1f2937;
+  font-weight: 600;
+  margin-bottom: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  position: absolute;
+  top: -20px; /* Posiciona el texto fijo arriba de la barra flotando */
+}
+
+.grafico-barra-wrapper:hover .grafico-barra-valor {
+  opacity: 1;
+}
+
+.grafico-barra-relleno {
+  width: 24px;
+  background-color: #e5e7eb;
+  border-radius: 6px 6px 0 0;
+  transition: height 0.5s ease-in-out, background-color 0.3s;
+  z-index: 1; /* Para que quede por encima de las líneas guía */
+}
+
+.grafico-barra-relleno.activo {
+  background-color: #3b82f6;
+}
+
+.grafico-dia-etiqueta {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Ajuste Responsivo Móvil */
+@media (max-width: 640px) {
+  .grafico-barra-relleno {
+    width: 16px;
+  }
+  .grafico-escala-y {
+    font-size: 0.75rem;
+    width: 20px;
+  }
+}
+
+/* --- CUADRÍCULA DE LOGROS (RESPONSIVA) --- */
+.logros-cuadricula {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.tarjeta-logro {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.logro-icono {
+  font-size: 2rem;
+}
+
+.logro-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+.logro-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* --- AVATAR Y MENSAJE MOTIVACIONAL --- */
+.avatar-motivacion-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 50px;
+}
+
+.avatar-burbuja-mensaje {
+  background-color: #f3e8ff; /* Fondo morado clarito */
+  border: 1px solid #e9d5ff;
+  padding: 16px 24px;
+  border-radius: 16px;
+  position: relative;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.avatar-burbuja-mensaje p {
+  margin: 0;
+  color: #6b21a8;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Flechita de la burbuja apuntando hacia abajo */
+.avatar-burbuja-mensaje::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: #f3e8ff transparent;
+  display: block;
+  width: 0;
+}
+
+.avatar-circulo-temporal {
+  width: 80px;
+  height: 80px;
+  background-color: #e0f2fe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* --- DISEÑO RESPONSIVO ADICIONAL --- */
+@media (max-width: 640px) {
+  .grafico-barras-contenedor {
+    height: 16px; /* Reducimos la altura en pantallas muy chicas */
+  }
+  .grafico-barra-relleno {
+    width: 14px; /* Barras un poco más delgadas */
+  }
+  .avatar-burbuja-mensaje {
+    width: 90%;
+  }
+}

@@ -1,0 +1,94 @@
+.timer-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: #F5F3FF;
+  padding: 24px;
+  text-align: center;
+}
+
+.timer-label {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #6366F1;
+  font-weight: 600;
+}
+
+.timer-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #23395B;
+  max-width: 320px;
+}
+
+.timer-clock {
+  font-size: 72px;
+  font-weight: 800;
+  color: #4F46E5;
+  font-variant-numeric: tabular-nums;
+  margin: 12px 0;
+}
+
+.timer-pause {
+  background: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: #4F46E5;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.15);
+  cursor: pointer;
+}
+
+.timer-cancel {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  color: #9CA3AF;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.timer-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(35, 57, 91, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.timer-modal {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 28px;
+  text-align: center;
+  max-width: 300px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.timer-modal h2 {
+  font-size: 20px;
+  color: #23395B;
+  margin-bottom: 20px;
+}
+
+.timer-modal button {
+  background: #4F46E5;
+  color: white;
+  border: none;
+  padding: 10px 32px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.timer-modal button:disabled {
+  opacity: 0.6;
+}

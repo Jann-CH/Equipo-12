@@ -1,0 +1,50 @@
+
+.time-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F8FAFF;
+  padding: 24px;
+  font-family: system-ui, sans-serif;
+}
+
+.time-card {
+  width: 100%;
+  max-width: 430px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 30px 24px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+}
+
+.time-avatar {
+  width: 90px;
+  height: 90px;
+  display: block;
+  margin: 0 auto 14px;
+}
+
+.time-title {
+  color: #23395B;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.time-text {
+  text-align: center;
+  color: #4B5563;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.time-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 30px;
+  margin-bottom: 28px;
+}

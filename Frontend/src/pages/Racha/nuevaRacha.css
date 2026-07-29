@@ -1,0 +1,272 @@
+/* Contenedor que cubre toda la pantalla para centrar la vista */
+.streak-overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* CAMBIAR de center a flex-start para que no corte el inicio al hacer scroll */
+  overflow-y: auto;        /* PERMITE EL SCROLL VERTICAL AQUÍ */
+  padding: 40px 20px;      /* Espacio libre arriba y abajo para que respire al scrollear */
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
+/* 2. Aseguramos que la tarjeta interna no se rompa ni se bloquee */
+.new-streak-card {
+  width: 100%;
+  max-width: 480px;        /* Un ancho ideal y responsivo estilo Duolingo */
+  height: auto;            /* NUNCA usar height fija aquí */
+  max-height: none;        /* Reseteamos por si acaso tenía un límite previo */
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-streak-header h2 {
+  font-size: 1.8rem;
+  color: #3c3c3c;
+  margin: 12px 0;
+  font-weight: 800;
+}
+
+.welcome-back-badge {
+  background-color: #e1f5fe;
+  color: #0288d1;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 50px;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+.new-streak-motivation {
+  color: #777777;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 30px;
+}
+
+/* Enfoque en las estadísticas */
+.new-streak-stats-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.new-streak-count {
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: #ff9600; /* Color enérgico de racha activa */
+  line-height: 1;
+}
+
+.new-streak-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #afafaf;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-top: 5px;
+}
+
+/* Vista previa de la semana */
+.preview-week {
+  background-color: #f7f9fa;
+  padding: 15px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  
+  /* --- NUEVAS LÍNEAS PARA HACERLO HORIZONTAL --- */
+  display: flex;
+  flex-direction: row;          /* Coloca los días uno al lado del otro */
+  justify-content: space-around; /* Distribuye el espacio de forma limpia */
+  align-items: center;          /* Alinea verticalmente los círculos y letras */
+}
+
+/* Añade esto también si las letras y los círculos se desalinean */
+.day-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;                     /* Espacio entre la letra y el círculo */
+}
+
+/* Botón de acción con estilo interactivo y relieve inferior */
+.btn-continue-streak {
+  background-color: #58cc02; /* Verde motivador */
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: filter 0.2s, transform 0.1s;
+  box-shadow: 0 5px 0 #46a302; /* Efecto 3D en la base */
+}
+
+.btn-continue-streak:hover {
+  filter: brightness(1.05);
+}
+
+.btn-continue-streak:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #46a302;
+}
+
+/* --- ANIMACIONES --- */
+.pop-in-animation {
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.pulse-effect {
+  animation: softPulse 2s infinite ease-in-out;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes softPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* Contenedor de la lista de metas */
+.goals-selector-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;               /* Unir un poco más las tarjetas */
+  margin: 16px 0;          /* Reducido de 24px a 16px */
+  width: 100%;
+}
+
+/* Tarjeta base de opción */
+.goal-option-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10 px 16px;
+  border-radius: 16px;
+  border: 2px solid #e5e5e5;
+  background-color: #ffffff;
+  box-shadow: 0 4px 0 #e5e5e5;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+}
+
+/* Estado activo/seleccionado */
+.goal-option-card.is-active {
+  border-color: #58cc02;
+  background-color: #f1fbf0;
+  box-shadow: 0 4px 0 #58cc02;
+  transform: translateY(2px);
+}
+
+.goal-option-card:active {
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 transparent;
+}
+
+/* Textos internos */
+.goal-option-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #3c3c3c;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.goal-difficulty-badge {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+}
+
+.goal-option-sub {
+  font-size: 0.88rem;
+  color: #777777;
+  /* padding: 10px 20px; */
+}
+
+/* Área de premios */
+.goal-option-prize {
+  text-align: right;
+  font-weight: bold;
+  color: #ff9600;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+.goal-option-prize .prize-amount {
+  font-size: 1.3rem;
+  line-height: 1;
+  /* text-align: center; */
+  /* margin: ; */
+  
+}
+
+.goal-option-prize .prize-label {
+  font-size: 0.75rem;
+  color: #afafaf;
+  font-weight: normal;
+}
+
+/* Margen del avatar ajustado para el selector */
+.selector-avatar-margin {
+  margin-bottom: 10px;
+}
+
+/* Botón secundario opcional para cancelar */
+.btn-cancel-streak {
+  background: none;
+  border: none;
+  color: #afafaf;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.btn-cancel-streak:hover {
+  color: #777777;
+}
+
+.vertical-actions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* agregado */
+.new-streak-count{
+  text-align: center;
+}
+.goal-option-info{
+  padding: 10px 20px;
+}

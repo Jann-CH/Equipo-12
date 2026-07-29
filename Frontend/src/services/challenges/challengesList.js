@@ -1,0 +1,73 @@
+// Lista fija de desafíos disponibles para elegir en el carrusel de "Mi Recorrido".
+export const CHALLENGES = [
+  {
+    id: 1,
+    title: "Estudiá 15 minutos sin distracciones",
+    description: "Elegí un tema pendiente y dedicale unos minutos con el celular en otra habitación.",
+    durationMinutes: 15,
+    icon: "📖",
+  },
+  {
+    id: 2,
+    title: "Repasá tus apuntes del día",
+    description: "Volvé a leer lo que anotaste hoy para que quede fresco antes de que se te olvide.",
+    durationMinutes: 10,
+    icon: "📝",
+  },
+  {
+    id: 3,
+    title: "Resolvé 5 ejercicios de práctica",
+    description: "Elegí un tema que te cueste y practicá con ejercicios cortos, sin buscar la solución de una.",
+    durationMinutes: 20,
+    icon: "✏️",
+  },
+  {
+    id: 4,
+    title: "Leé un capítulo de tu libro",
+    description: "Avanzá con el libro o material que tenés pendiente, a tu ritmo y sin apuro.",
+    durationMinutes: 25,
+    icon: "📚",
+  },
+  {
+    id: 5,
+    title: "Organizá tu semana de estudio",
+    description: "Anotá qué temas vas a repasar cada día para llegar más tranquilo a los exámenes.",
+    durationMinutes: 10,
+    icon: "🗓️",
+  },
+  {
+    id: 6,
+    title: "Escuchá un resumen en audio",
+    description: "Usá alguno de tus PDFs convertidos a audio y escuchalo mientras hacés otra cosa.",
+    durationMinutes: 15,
+    icon: "🎧",
+  },
+  {
+    id: 7,
+    title: "Hacé un mapa mental del tema",
+    description: "Dibujá o escribí las ideas principales de un tema y cómo se conectan entre sí.",
+    durationMinutes: 20,
+    icon: "🧠",
+  },
+  {
+    id: 8,
+    title: "Repasá tus tareas pendientes",
+    description: "Date una vuelta rápida por tu lista de tareas y marcá las que ya podés cerrar.",
+    durationMinutes: 5,
+    icon: "✅",
+  },
+  {
+    id: 9,
+    title: "Practicá la técnica Pomodoro",
+    description: "Estudiá con bloques de tiempo enfocado y una pausa corta al terminar cada uno.",
+    durationMinutes: 25,
+    icon: "⏱️",
+  },
+  {
+    id: 10,
+    title: "Reflexioná sobre tu progreso",
+    description: "Pensá qué avanzaste esta semana y qué te gustaría mejorar la próxima.",
+    durationMinutes: 10,
+    icon: "🌱",
+  },
+];

@@ -1,0 +1,154 @@
+:root {
+    --primary-color: #ffc107; /* Amarillo Estrella */
+    --bg-color: #121214;      /* Fondo Oscuro */
+    --card-bg: #1e1e24;       /* Fondo Tarjeta */
+    --text-color: #ffffff;
+    --text-secondary: #aaaaaa;
+}
+
+.streak-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Contenedor Principal */
+.streak-card {
+    background-color: var(--card-bg);
+    border-radius: 24px;
+    padding: 30px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 2px solid #333;
+}
+
+/* 1) Mensajes */
+.message-container h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+.message-container p {
+    color: var(--text-secondary);
+    margin: 0 0 25px 0;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* 2) Avatar de Estrella */
+.avatar-container {
+    margin-bottom: 15px;
+    display: flex;       /* Convierte el contenedor en Flex */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    width: 100%;         /* Asegura q
+}
+.star-avatar {
+    width: 100
+    px;  /* Ajusta el tamaño según tu diseño estilo Duolingo */
+    height: auto;
+    display: block;
+
+    /* font-size: 80px;
+    display: inline-block;
+    transition: transform 0.3s ease; */
+}
+.star-avatar.animated {
+    animation: pulse 2s infinite ease-in-out;
+}
+.star-avatar.grayed {
+    filter: grayscale(1) opacity(0.4);
+}
+
+/* 3) Contador de Días */
+.streak-count {
+    font-size: 3.5rem;
+    font-weight: bold;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+.streak-count.active {
+    color: var(--primary-color);
+}
+.streak-count.inactive {
+    color: var(--text-secondary);
+}
+.streak-label {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+/* 4) Calendario Semanal de 7 días */
+.week-container {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 16px;
+}
+.day-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.day-label {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--text-secondary);
+}
+.day-indicator {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: transparent;
+    transition: all 0.3s ease;
+}
+
+/* Estados de los círculos de los días */
+.day-indicator.completed {
+    background-color: var(--primary-color);
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+.day-indicator.current {
+    border: 2px solid var(--primary-color);
+    background-color: transparent;
+}
+
+/* Animación de la estrella */
+@keyframes pulse {
+    0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,193,7,0.4)); }
+    50% { transform: scale(1.08); filter: drop-shadow(0 0 15px rgba(255,193,7,0.7)); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,193,7,0.4)); }
+}
+
+/* Botón simulador */
+.btn-test {
+    margin-top: 25px;
+    background: transparent;
+    border: 1px solid #444;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+.btn-test:hover {
+    background: #222;
+    color: #fff;
+}

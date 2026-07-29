@@ -1,0 +1,75 @@
+/* Contenedor de la fila completa */
+.metricas-fila {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+/* Permitir que en pantallas medianas/chicas se acomoden en filas inferiores */
+@media (max-width: 1024px) {
+  .metricas-fila {
+    flex-wrap: wrap;
+  }
+}
+
+/* Tarjeta Base Universal */
+.tarjeta-metrica {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  flex: 1;
+  min-width: 220px; /* Evita que se aplasten demasiado */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+/* Contenedor del Icono */
+.icono-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  margin-right: 16px;
+  flex-shrink: 0; /* Evita que el contenedor del icono se deforme */
+}
+
+/* Bloque de Textos */
+.info-contenedor {
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-etiqueta {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+}
+
+.tarjeta-valor {
+  font-size: 1.3rem;
+  color: #1e293b;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* --- Variaciones de Color por Tarjeta --- */
+
+/* 1. Racha (Naranja) */
+.racha-activa { background-color: #fff7ed; fill: #f97316; }
+.racha-inactiva { background-color: #f3f4f6; fill: #9ca3af; }
+
+/* 2. Desafíos (Verde) */
+.desafios-color { background-color: #f0fdf4; fill: #22c55e; }
+
+/* 3. Tareas (Azul) */
+.tareas-color { background-color: #eff6ff; fill: #3b82f6; }
+
+/* 4. Tiempo (Morado) */
+.tiempo-color { background-color: #faf5ff; fill: #a855f7; }
