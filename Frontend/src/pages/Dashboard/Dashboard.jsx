@@ -112,7 +112,7 @@ function Dashboard() {
           />
 
           <h1>
-            ¡Hola{userProfile.name ? `, ${userProfile.name}` : ""}! 👋
+            ¡Hola{(userProfile.apodo || userProfile.name) ? `, ${userProfile.apodo || userProfile.name}` : ""}! 👋
           </h1>
 
           <p className="welcome-message">

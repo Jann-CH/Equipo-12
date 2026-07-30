@@ -39,25 +39,38 @@ export default function useRegister() {
 
     setError("");
 
-    if (!formData.name.trim()) {
+    // Primero chequeamos TODOS los campos obligatorios juntos. Si falta más
+    // de uno, mostramos un mensaje genérico en vez de ir corrigiendo campo
+    // por campo en sucesivos intentos (que resulta frustrante: completa el
+    // nombre, reintenta, le falta el mail, reintenta, le falta la
+    // contraseña...).
+    const missingFields = [];
 
-      setError("Ingresá tu nombre.");
+    if (!formData.name.trim()) missingFields.push("name");
+    if (!formData.fechaNacimiento) missingFields.push("fechaNacimiento");
+    if (!formData.email.trim()) missingFields.push("email");
+    if (!formData.password) missingFields.push("password");
+    if (!formData.confirmPassword) missingFields.push("confirmPassword");
+
+    if (missingFields.length > 1) {
+
+      setError("Completá tus datos.");
 
       return;
 
     }
 
-    if (!formData.fechaNacimiento) {
+    if (missingFields.length === 1) {
 
-      setError("Ingresá tu fecha de nacimiento.");
+      const messages = {
+        name: "Ingresá tu nombre.",
+        fechaNacimiento: "Ingresá tu fecha de nacimiento.",
+        email: "Ingresá un correo electrónico.",
+        password: "Ingresá una contraseña.",
+        confirmPassword: "Confirmá tu contraseña.",
+      };
 
-      return;
-
-    }
-
-    if (!formData.email.trim()) {
-
-      setError("Ingresá un correo electrónico.");
+      setError(messages[missingFields[0]]);
 
       return;
 

@@ -65,9 +65,8 @@ function Register() {
             type="text"
             id="apodo"
             name="apodo"
-            className="form-input"
-            placeholder="Ingresa tu apodo"
             className="register-input"
+            placeholder="Ingresa tu apodo"
             value={formData.apodo}
             onChange={handleChange}
           />
@@ -75,14 +74,13 @@ function Register() {
           <label htmlFor="fechaNacimiento" className="register-label">Fecha de nacimiento</label>
 
           <input
-          type="date"
-          id="fechaNacimiento"
-          name="fechaNacimiento"
-          className="form-input"
-          value={formData.fechaNacimiento}
-          className="register-input"
-          onChange={handleChange}
-        />
+            type="date"
+            id="fechaNacimiento"
+            name="fechaNacimiento"
+            className="register-input"
+            value={formData.fechaNacimiento}
+            onChange={handleChange}
+          />
 
           <label
             htmlFor="email"
