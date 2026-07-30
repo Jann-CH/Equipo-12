@@ -29,6 +29,33 @@ Todos (excepto `/health`) requieren header `Authorization: Bearer <idToken>`.
 | GET    | `/api/mentor/greeting`    | Saludo inicial de Nova                      |
 | POST   | `/api/mentor/message`     | Envía un mensaje y devuelve la respuesta    |
 
+### Exportación de datos para Data Analytics
+
+Estos NO usan el token de usuario — usan una clave propia (`ADMIN_EXPORT_KEY`
+en `Backend/.env`), pensada para compartir con el equipo de Data Analytics.
+Siempre devuelven los datos actuales de Firestore (no un backup viejo).
+
+| Método | Ruta                              | Qué hace                                    |
+|--------|-------------------------------------|----------------------------------------------|
+| GET    | `/api/admin/export/users?format=json\|csv`   | Perfiles de todos los usuarios       |
+| GET    | `/api/admin/export/tasks?format=json\|csv`   | Todas las tareas de todos los usuarios |
+| GET    | `/api/admin/export/content?format=json\|csv` | Todo el contenido de audio/PDF       |
+| GET    | `/api/admin/export/all`                      | Las 3 colecciones juntas (solo JSON) |
+
+**Cómo se llaman:** pasando la clave por header `x-admin-key: TU_CLAVE` o por
+query param `?key=TU_CLAVE`. Ejemplo, para pegar directo en el navegador:
+```
+https://tu-backend.onrender.com/api/admin/export/users?format=csv&key=TU_CLAVE
+```
+El equipo de Data Analytics puede simplemente abrir esa URL en el navegador
+(descarga el CSV directo), o consumirla desde Python/Excel/Google Sheets:
+- Python: `pandas.read_json(url)` o `pandas.read_csv(url)`
+- Google Sheets: `=IMPORTDATA("url")` (con el formato CSV)
+
+⚠️ Esta clave da acceso a datos personales de usuarios (nombre, email, etc.).
+Compartila solo con quien la necesite, y si alguna vez se filtra, cambiala en
+`Backend/.env` (y en el Render de producción) de inmediato.
+
 ## Estructura
 
 ```

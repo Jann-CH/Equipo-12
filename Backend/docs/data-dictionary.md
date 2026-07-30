@@ -64,6 +64,16 @@ Contenido en audio del usuario (PDFs convertidos a voz).
 
 ## Cómo acceder a los datos
 
+- **Acceso online, siempre actualizado (recomendado)**: `GET /api/admin/export/users?format=json` (o `csv`), protegido con una clave (`ADMIN_EXPORT_KEY` en `Backend/.env`). Se puede abrir directo en el navegador o consumir desde Python/Excel/Sheets — ver detalle en `Backend/README.md`.
+- **Exportar a JSON/CSV como archivo puntual**:
+  desde la carpeta `Backend`, con el `.env` ya configurado, correr:
+  ```bash
+  npm run export-data
+  ```
+  Esto genera `Backend/exports/users.json`, `users.csv`, `tasks.json`,
+  `tasks.csv`, `content.json` y `content.csv` — listos para mandarle al
+  equipo de Data Analytics. (Esa carpeta está en `.gitignore` a propósito,
+  para no subir datos de usuarios reales a GitHub sin querer.)
 - **Firebase Console** → Firestore Database → navegar la colección `users`.
 - **Exportar a BigQuery**: Firebase permite configurar una extensión oficial
   ("Export Collections to BigQuery") para que Data Analytics pueda correr SQL

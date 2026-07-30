@@ -5,6 +5,7 @@ import mentorRoutes from "./routes/mentorRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
 import contentRoutes from "./routes/contentRoutes.js";
 import youtubeRoutes from "./routes/youtubeRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use("/api/mentor", mentorRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/content", contentRoutes);
 app.use("/api/youtube", youtubeRoutes);
+app.use("/api/admin", adminRoutes);
 
 app.use((req, res) => res.status(404).json({ message: "Ruta no encontrada." }));
 
