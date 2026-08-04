@@ -44,8 +44,8 @@ export default function Content() {
             onClick={() => setCategory(item)}
             className={`text-xs px-4 py-1.5 rounded-full whitespace-nowrap transition-colors ${
               category === item
-                ? "bg-indigo-600 text-white"
-                : "bg-white text-gray-600 border border-gray-200 hover:border-indigo-300"
+                ? "bg-[#186875] text-white"
+                : "bg-white text-gray-600 border border-gray-200 hover:border-[#186875]/40"
             }`}
           >
             {item}

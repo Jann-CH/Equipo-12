@@ -1,6 +1,6 @@
 
 import "./Login.css";
-import avatarNova from "/branding/avatar-nova-hi.png";
+import avatarNova from "/branding/Avatar-Nova-Estrella.png";
 
 import { useNavigate } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
@@ -56,6 +56,7 @@ function Login() {
             value={formData.email}
             onChange={handleChange}
             className="login-input"
+            placeholder="Ej.: sofia.gonzalez@gmail.com"
           />
 
           <label
@@ -73,6 +74,7 @@ function Login() {
             value={formData.password}
             onChange={handleChange}
             className="login-input"
+            placeholder="Ingresá tu contraseña"
           />
 
           {error && (
@@ -105,7 +107,7 @@ function Login() {
         </p>
 
         <button
-          className="register-link"
+          className="login-link"
           onClick={() => navigate("/registro")}
         >
           Crear cuenta

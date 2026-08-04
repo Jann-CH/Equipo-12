@@ -1,6 +1,6 @@
 
 import "./ForgotPassword.css";
-import avatarNova from "/branding/avatar-nova-hi.png";
+import avatarNova from "/branding/Avatar-Nova-Estrella.png";
 
 import { useNavigate } from "react-router-dom";
 import useForgotPassword from "../../hooks/useForgotPassword";
