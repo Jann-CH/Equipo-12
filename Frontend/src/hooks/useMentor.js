@@ -1,42 +1,93 @@
-import { useState, useEffect } from 'react'
-import { getMentorGreeting, sendMessageToMentor } from '../services/mentor/mentorService'
+import { useState, useEffect } from "react";
+import {
+  getMentorGreeting,
+  sendMessageToMentor,
+} from "../services/mentor/mentorService";
 
-export function useMentor(userId) {
-  const [isOpen, setIsOpen]         = useState(false)
-  const [messages, setMessages]     = useState([])
-  const [isTyping, setIsTyping]     = useState(false)
-  const [isLoading, setIsLoading]   = useState(true)
+export function useMentor() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Cargar saludo inicial
+  // Saludo inicial
   useEffect(() => {
-    getMentorGreeting(userId)
-      .then(greeting => {
-        setMessages([{ from: 'mentor', text: greeting }])
-      })
-      .finally(() => setIsLoading(false))
-  }, [userId])
+    async function loadGreeting() {
+      try {
+        const greeting = await getMentorGreeting();
 
-  const toggleChat = () => setIsOpen(prev => !prev)
+        setMessages([
+          {
+            from: "mentor",
+            text: greeting,
+          },
+        ]);
+      } catch {
+        setMessages([
+          {
+            from: "mentor",
+            text: "¡Hola! Soy Nova 👋 ¿En qué puedo ayudarte hoy?",
+          },
+        ]);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadGreeting();
+  }, []);
+
+  const toggleChat = () => {
+    setIsOpen((prev) => !prev);
+  };
 
   const sendMessage = async (text) => {
-    if (!text.trim()) return
+    const message = text.trim();
 
-    // Agregar mensaje del usuario
-    setMessages(prev => [...prev, { from: 'user', text }])
-    setIsTyping(true)
+    if (!message) return;
+
+    // Mostrar mensaje del usuario inmediatamente
+    setMessages((prev) => [
+      ...prev,
+      {
+        from: "user",
+        text: message,
+      },
+    ]);
+
+    setIsTyping(true);
 
     try {
-      const reply = await sendMessageToMentor(text, userId)
-      setMessages(prev => [...prev, { from: 'mentor', text: reply }])
-    } catch {
-      setMessages(prev => [...prev, {
-        from: 'mentor',
-        text: 'Ups, tuve un problema. ¿Podés intentarlo de nuevo?'
-      }])
-    } finally {
-      setIsTyping(false)
-    }
-  }
+      const reply = await sendMessageToMentor(message);
 
-  return { isOpen, toggleChat, messages, sendMessage, isTyping, isLoading }
+      setMessages((prev) => [
+        ...prev,
+        {
+          from: "mentor",
+          text: reply,
+        },
+      ]);
+    } catch (error) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          from: "mentor",
+          text:
+            error?.message ||
+            "Ups, ocurrió un problema. Intentá nuevamente.",
+        },
+      ]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
+
+  return {
+    isOpen,
+    toggleChat,
+    messages,
+    sendMessage,
+    isTyping,
+    isLoading,
+  };
 }
