@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./Goals.css";
 
-import avatarNova from "/branding/avatar-nova-hi.png";
+import avatarNova from "/branding/Avatar-Nova-Estrella.svg";
 
 import SelectionCard from "../../components/SelectionCard/SelectionCard";
 import PrimaryButton from "../../components/common/PrimaryButton/PrimaryButton";

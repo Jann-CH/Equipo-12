@@ -3,7 +3,7 @@ import "./Ready.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import avatarNova from "/branding/avatar-nova-hi.png";
+import avatarNova from "/branding/Avatar-Nova-Estrella.svg";
 
 import PrimaryButton from "../../components/common/PrimaryButton/PrimaryButton";
 import { useUser } from "../../contexts/UserContext";
