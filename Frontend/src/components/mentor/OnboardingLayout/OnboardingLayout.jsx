@@ -1,6 +1,6 @@
 
 import "./OnboardingLayout.css";
-import avatarNova from "/branding/avatar-nova-hi.png";
+import avatarNova from "/branding/Avatar-Nova-Estrella.svg";
 
 function OnboardingLayout({
   title,
