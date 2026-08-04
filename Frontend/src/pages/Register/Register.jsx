@@ -1,6 +1,6 @@
 
 import "./Register.css";
-import avatarNova from "/branding/avatar-nova-hi.png";
+import avatarNova from "/branding/Avatar-Nova-Estrella.png";
 
 import { useNavigate } from "react-router-dom";
 import useRegister from "../../hooks/useRegister";
@@ -56,7 +56,7 @@ function Register() {
             value={formData.name}
             onChange={handleChange}
             className="register-input"
-            placeholder="Ingresá nombre y apellido"
+            placeholder="Ej.: Sofía González"
           />
 
           <label htmlFor="apodo" className="register-label">Apodo</label>
@@ -66,7 +66,7 @@ function Register() {
             id="apodo"
             name="apodo"
             className="register-input"
-            placeholder="Ingresa tu apodo"
+            placeholder="Ej.: Sofi"
             value={formData.apodo}
             onChange={handleChange}
           />
@@ -97,7 +97,7 @@ function Register() {
             value={formData.email}
             onChange={handleChange}
             className="register-input"
-            placeholder="Ingresá correo electrónico"
+            placeholder="Ej.: sofia.gonzalez@gmail.com"
           />
 
           <label
@@ -114,7 +114,7 @@ function Register() {
             autoComplete="new-password"
             value={formData.password}
             onChange={handleChange}
-            placeholder="Ingresá contraseña"
+            placeholder="Mínimo 8 caracteres"
             className="register-input"
           />
 

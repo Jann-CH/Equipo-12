@@ -8,8 +8,8 @@ export function MentorAvatar({ isOpen, onToggle, animationSrc }) {
       aria-label={isOpen ? 'Cerrar mentor' : 'Abrir mentor'}
       className={`
         fixed z-50 rounded-full
-        shadow-xl shadow-indigo-300
-        border-2 border-indigo-200
+        shadow-xl shadow-[#186875]/35
+        border-2 border-[#C3EDE1]
         overflow-hidden
         hover:scale-105 active:scale-95
         transition-all duration-200
@@ -24,7 +24,7 @@ export function MentorAvatar({ isOpen, onToggle, animationSrc }) {
     >
       {/* X — visible solo cuando está abierto */}
       <div className={`
-        absolute inset-0 bg-indigo-600 flex items-center justify-center
+        absolute inset-0 bg-[#186875] flex items-center justify-center
         transition-opacity duration-200
         ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}
       `}>
@@ -45,7 +45,7 @@ export function MentorAvatar({ isOpen, onToggle, animationSrc }) {
             style={{ width: '100%', height: '100%' }}
           />
         ) : (
-          <div className="w-full h-full bg-linear-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+          <div className="w-full h-full bg-linear-to-br from-[#186875] to-[#C3EDE1] flex items-center justify-center">
             <span className="text-3xl">🤖</span>
           </div>
         )}

@@ -1,4 +1,16 @@
-// ~10 mensajes motivacionales predeterminados que rotan en la pantalla de Progreso.
+import {
+  getMentorGreeting as fetchGreeting,
+  sendMessageToMentor as sendMessage,
+} from "../../api/mentorApi";
+
+export async function getMentorGreeting() {
+  return fetchGreeting();
+}
+
+export async function sendMessageToMentor(message) {
+  return sendMessage(message);
+}
+
 export const NOVA_MESSAGES = [
   "Vas increíble: la constancia de hoy es el éxito de mañana.",
   "Cada tarea completada es un paso más cerca de tu objetivo.",

@@ -6,9 +6,10 @@ export async function getMentorGreeting() {
 }
 
 export async function sendMessageToMentor(message) {
-  const data = await apiRequest("/mentor/message", {
+  const data = await apiRequest("/mentor/chat", {
     method: "POST",
     body: JSON.stringify({ message }),
   });
+
   return data.reply;
 }

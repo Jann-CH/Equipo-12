@@ -37,7 +37,7 @@ export function Profile() {
     setPasswordMessage("");
 
     if (newPassword.length < 6) {
-      setPasswordError("La contraseña debe tener al menos 6 caracteres.");
+      setPasswordError("La contraseña debe tener al menos 8 caracteres.");
       return;
     }
 
@@ -125,7 +125,7 @@ export function Profile() {
                 type="password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                placeholder="Nueva contraseña (mín. 6 caracteres)"
+                placeholder="Nueva contraseña (mín. 8 caracteres)"
                 className="text-sm border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-300"
               />
               <div className="flex gap-2">

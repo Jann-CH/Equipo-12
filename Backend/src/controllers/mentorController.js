@@ -1,15 +1,48 @@
 import * as mentorService from "../services/mentorService.js";
 
 export async function greeting(req, res) {
-  const message = await mentorService.getGreeting();
-  res.json({ message });
+
+  try {
+
+    const greeting = await mentorService.getGreeting(req.user.uid);
+
+    res.json({
+      message: greeting,
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: error.message,
+    });
+
+  }
+
 }
 
-export async function message(req, res) {
-  const { message: text } = req.body;
-  if (!text || !text.trim()) {
-    return res.status(400).json({ message: "El mensaje no puede estar vacío." });
+export async function chat(req, res) {
+
+  try {
+
+    const { message } = req.body;
+
+    const response = await mentorService.chat(
+      req.user.uid,
+      message
+    );
+
+    res.json(response);
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: error.message,
+    });
+
   }
-  const reply = await mentorService.reply(text);
-  res.json({ reply });
+
 }

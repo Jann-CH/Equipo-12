@@ -1,17 +1,17 @@
 import { NavLink } from 'react-router-dom'
-import { Home, PlayCircle, LayoutDashboard, User, Plus } from 'lucide-react'
+import { Home, PlayCircle, TrendingUp, User, Plus } from 'lucide-react'
 
 const DESKTOP_LINKS = [
     { to: '/mi-recorrido', icon: Home, label: 'Inicio' },
     { to: '/contenido', icon: PlayCircle, label: 'Contenido' },
-    { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+    { to: '/dashboard', icon: TrendingUp, label: 'Progreso' },
 ]
 
 const MOBILE_LINKS = [
     { to: '/mi-recorrido', icon: Home, label: 'Inicio' },
     { to: '/contenido', icon: PlayCircle, label: 'Contenido' },
     null, // botón central (+)
-    { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+    { to: '/dashboard', icon: TrendingUp, label: 'Progreso' },
     { to: '/perfil', icon: User, label: 'Perfil' },
 ]
 
@@ -19,16 +19,16 @@ export function Navbar({ currentStreak = 0, onAddClick }) {
     return (
         <>
             {/* ====== DESKTOP — top nav ====== */}
-            <nav className="hidden md:flex items-center h-12 px-6 bg-indigo-600 relative">
+            <nav className="hidden md:flex items-center h-12 px-6 bg-[#C3EDE1] relative">
 
                 {/* Logo — izquierda */}
                 <div className="flex items-center gap-2 shrink-0">
                     <img
                         src="/branding/avatar-nova-hi.png"
                         alt="Innova Mentor"
-                        className="h-7 w-auto"
+                        className="h-9 w-auto"
                     />
-                    <span className="text-sm font-medium text-white">Innova Mentor</span>
+                    {/* <span className="text-sm font-medium text-slate-800">Innova Mentor</span> */}
                 </div>
 
                 {/* Links — absolutamente centrados */}
@@ -39,8 +39,8 @@ export function Navbar({ currentStreak = 0, onAddClick }) {
                             to={to}
                             className={({ isActive }) =>
                                 `flex items-center gap-2 px-4 h-12 text-xs border-b-2 transition-colors ${isActive
-                                    ? 'text-white border-white'
-                                    : 'text-white/70 border-transparent hover:text-white'
+                                    ? 'text-slate-900 border-slate-900'
+                                    : 'text-slate-700/70 border-transparent hover:text-slate-900'
                                 }`
                             }
                         >
@@ -54,25 +54,25 @@ export function Navbar({ currentStreak = 0, onAddClick }) {
                 <div className="flex items-center gap-3 ml-auto">
                     <button
                         onClick={onAddClick}
-                        className="flex items-center gap-1.5 bg-white/15 hover:bg-white/25 text-white text-xs rounded-full px-3 py-1.5 transition-colors"
+                        className="flex items-center gap-1.5 bg-slate-900/10 hover:text-slate-900 text-slate-700/70 text-xs rounded-full px-3 py-1.5 transition-colors"
                     >
                         <Plus size={14} />
                         Nueva tarea
                     </button>
 
                     {currentStreak > 0 && (
-                        <div className="flex items-center gap-1.5 bg-white/15 rounded-full px-3 py-1">
-                            <span className="text-xs text-white font-medium">🔥 {currentStreak} días</span>
+                        <div className="flex items-center gap-1.5 bg-slate-900/10 rounded-full px-3 py-1">
+                            <span className="text-xs text-slate-800 font-medium">🔥 {currentStreak} días</span>
                         </div>
                     )}
                     <NavLink
                         to="/perfil"
                         className={({ isActive }) =>
-                            `w-7 h-7 rounded-full flex items-center justify-center transition-colors ${isActive ? 'bg-white/40' : 'bg-white/20 hover:bg-white/30'
+                            `w-7 h-7 rounded-full flex items-center justify-center transition-colors ${isActive ? 'bg-slate-900/30' : 'bg-slate-900/15 hover:bg-slate-900/25'
                             }`
                         }
                     >
-                        <User size={14} className="text-white" />
+                        <User size={14} className="text-slate-800" />
                     </NavLink>
                 </div>
 
@@ -85,8 +85,8 @@ export function Navbar({ currentStreak = 0, onAddClick }) {
                         if (!item) {
                             return (
                                 <button key="add" onClick={onAddClick} className="flex flex-col items-center gap-1 -mt-5">
-                                    <div className="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-200">
-                                        <Plus size={22} className="text-white" />
+                                    <div className="w-12 h-12 rounded-full bg-[#C3EDE1] flex items-center justify-center shadow-lg shadow-[#C3EDE1]/50">
+                                        <Plus size={22} className="text-slate-900" />
                                     </div>
                                     <span className="text-xs text-gray-400">Agregar</span>
                                 </button>
@@ -98,7 +98,7 @@ export function Navbar({ currentStreak = 0, onAddClick }) {
                                 key={to}
                                 to={to}
                                 className={({ isActive }) =>
-                                    `flex flex-col items-center gap-1 pt-3 min-w-[44px] ${isActive ? 'text-indigo-600' : 'text-gray-400'
+                                    `flex flex-col items-center gap-1 pt-3 min-w-[44px] ${isActive ? 'text-[#3a8a75]' : 'text-gray-400'
                                     }`
                                 }
                             >
