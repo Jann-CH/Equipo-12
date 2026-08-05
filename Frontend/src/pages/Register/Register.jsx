@@ -5,15 +5,22 @@ import avatarNova from "/branding/Avatar-Nova-Estrella.png";
 import { useNavigate } from "react-router-dom";
 import useRegister from "../../hooks/useRegister";
 
+const errorInputStyle = { borderColor: "#e53935", outlineColor: "#e53935" };
+const errorTextStyle = { color: "#e53935", fontSize: "0.8rem", margin: "-8px 0 8px" };
+
 function Register() {
 
   const navigate = useNavigate();
 
   const {
     formData,
+    fieldErrors,
+    touched,
+    hasLiveErrors,
     error,
     loading,
     handleChange,
+    handleBlur,
     handleSubmit,
   } = useRegister();
 
@@ -55,9 +62,14 @@ function Register() {
             autoComplete="name"
             value={formData.name}
             onChange={handleChange}
+            onBlur={handleBlur}
             className="register-input"
             placeholder="Ej.: Sofía González"
+            style={touched.name && fieldErrors.name ? errorInputStyle : undefined}
           />
+          {touched.name && fieldErrors.name && (
+            <p style={errorTextStyle}>{fieldErrors.name}</p>
+          )}
 
           <label htmlFor="apodo" className="register-label">Apodo</label>
 
@@ -80,7 +92,12 @@ function Register() {
             className="register-input"
             value={formData.fechaNacimiento}
             onChange={handleChange}
+            onBlur={handleBlur}
+            style={touched.fechaNacimiento && fieldErrors.fechaNacimiento ? errorInputStyle : undefined}
           />
+          {touched.fechaNacimiento && fieldErrors.fechaNacimiento && (
+            <p style={errorTextStyle}>{fieldErrors.fechaNacimiento}</p>
+          )}
 
           <label
             htmlFor="email"
@@ -96,9 +113,14 @@ function Register() {
             autoComplete="email"
             value={formData.email}
             onChange={handleChange}
+            onBlur={handleBlur}
             className="register-input"
             placeholder="Ej.: sofia.gonzalez@gmail.com"
+            style={touched.email && fieldErrors.email ? errorInputStyle : undefined}
           />
+          {touched.email && fieldErrors.email && (
+            <p style={errorTextStyle}>{fieldErrors.email}</p>
+          )}
 
           <label
             htmlFor="password"
@@ -114,9 +136,14 @@ function Register() {
             autoComplete="new-password"
             value={formData.password}
             onChange={handleChange}
+            onBlur={handleBlur}
             placeholder="Mínimo 8 caracteres"
             className="register-input"
+            style={touched.password && fieldErrors.password ? errorInputStyle : undefined}
           />
+          {touched.password && fieldErrors.password && (
+            <p style={errorTextStyle}>{fieldErrors.password}</p>
+          )}
 
           <label
             htmlFor="confirmPassword"
@@ -132,9 +159,14 @@ function Register() {
             autoComplete="new-password"
             value={formData.confirmPassword}
             onChange={handleChange}
+            onBlur={handleBlur}
             placeholder="Confirmá contraseña"
             className="register-input"
+            style={touched.confirmPassword && fieldErrors.confirmPassword ? errorInputStyle : undefined}
           />
+          {touched.confirmPassword && fieldErrors.confirmPassword && (
+            <p style={errorTextStyle}>{fieldErrors.confirmPassword}</p>
+          )}
 
           {error && (
             <div className="register-error">
@@ -145,7 +177,7 @@ function Register() {
           <button
             type="submit"
             className="register-button"
-            disabled={loading}
+            disabled={loading || hasLiveErrors}
           >
             {loading
               ? "Creando cuenta..."
@@ -172,7 +204,3 @@ function Register() {
 }
 
 export default Register;
-
-
-
-

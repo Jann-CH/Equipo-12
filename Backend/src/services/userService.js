@@ -45,6 +45,7 @@ export async function createUserProfile(uid, email, { name, apodo = null, fechaN
     achievements: 0,
     reminderEnabled: false,
     reminderTime: null,
+    lastReminderSentDate: null,
     loginCount: 0,
     lastLoginAt: null,
     createdAt: admin.firestore.FieldValue.serverTimestamp(),

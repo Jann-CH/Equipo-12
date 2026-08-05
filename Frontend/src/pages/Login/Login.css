@@ -21,12 +21,10 @@
 }
 
 .login-avatar {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 12px rgba(38, 198, 218, 0.25);
+  margin: 16px auto 0px;
 }
 
 .login-title {

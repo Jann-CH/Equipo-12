@@ -1,5 +1,4 @@
 export const INTENTS = {
-  GREETING: "greeting",
   TASKS: "tasks",
   START: "start",
   MOTIVATION: "motivation",
@@ -7,51 +6,31 @@ export const INTENTS = {
   UNKNOWN: "unknown",
 };
 
+// Frases EXACTAS de los botones de respuesta rápida del chat (ver
+// QUICK_REPLIES en Frontend/src/components/mentor/MentorChat.jsx).
+// Solo si el mensaje coincide con alguna de estas usamos la respuesta
+// prearmada — cualquier otra cosa que el usuario escriba libremente
+// (aunque contenga palabras parecidas, tipo "hola" o "ayuda" en medio de
+// una oración) la responde Groq, no el mensaje predefinido.
+const EXACT_MATCHES = {
+  [INTENTS.TASKS]: ["¿qué tareas tengo hoy?", "que tareas tengo hoy"],
+  [INTENTS.START]: ["¿por dónde empiezo?", "por donde empiezo"],
+  [INTENTS.STUDY]: ["necesito ayuda para estudiar"],
+  [INTENTS.MOTIVATION]: ["motivame un poco 💪", "motivame un poco"],
+};
+
+function normalize(text) {
+  return text.trim().toLowerCase();
+}
+
 export function detectIntent(message) {
-  const text = message.toLowerCase();
 
-  if (
-    text.includes("hola") ||
-    text.includes("buenas") ||
-    text.includes("buen día") ||
-    text.includes("buen dia")
-  ) {
-    return INTENTS.GREETING;
-  }
+  const text = normalize(message);
 
-  if (
-    text.includes("tarea") ||
-    text.includes("pendiente") ||
-    text.includes("qué tengo") ||
-    text.includes("que tengo")
-  ) {
-    return INTENTS.TASKS;
-  }
-
-  if (
-    text.includes("por dónde empiezo") ||
-    text.includes("por donde empiezo") ||
-    text.includes("qué hago primero") ||
-    text.includes("que hago primero")
-  ) {
-    return INTENTS.START;
-  }
-
-  if (
-    text.includes("motiv") ||
-    text.includes("desanim") ||
-    text.includes("no puedo")
-  ) {
-    return INTENTS.MOTIVATION;
-  }
-
-  if (
-    text.includes("ayuda") ||
-    text.includes("estudiar") ||
-    text.includes("concentr")
-  ) {
-    return INTENTS.STUDY;
+  for (const [intent, phrases] of Object.entries(EXACT_MATCHES)) {
+    if (phrases.includes(text)) return intent;
   }
 
   return INTENTS.UNKNOWN;
+
 }

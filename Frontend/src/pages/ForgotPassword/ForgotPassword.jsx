@@ -10,13 +10,22 @@ function ForgotPassword() {
   const navigate = useNavigate();
 
   const {
+    mode,
     email,
+    resetEmail,
+    password,
+    confirmPassword,
     error,
     success,
+    verifying,
     loading,
     handleChange,
+    handlePasswordChange,
+    handleConfirmPasswordChange,
     handleSubmit,
   } = useForgotPassword();
+
+  const isReset = mode === "reset";
 
   return (
 
@@ -31,36 +40,89 @@ function ForgotPassword() {
         />
 
         <h1 className="forgot-title">
-          Recuperar contraseña
+          {isReset ? "Restablecer contraseña" : "Recuperar contraseña"}
         </h1>
 
-        <p className="forgot-subtitle">
-          Ingresá tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.
-        </p>
+        {isReset && verifying && (
+          <p className="forgot-subtitle">Verificando el enlace...</p>
+        )}
 
-        <form onSubmit={handleSubmit}>
+        {isReset && !verifying && !success && !error && (
+          <p className="forgot-subtitle">
+            Ingresá una nueva contraseña para <strong>{resetEmail}</strong>.
+          </p>
+        )}
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Correo electrónico"
-            className="forgot-input"
-            value={email}
-            onChange={handleChange}
-          />
+        {!isReset && (
+          <p className="forgot-subtitle">
+            Ingresá tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.
+          </p>
+        )}
 
-          {error && <p className="forgot-error">{error}</p>}
-          {success && <p className="forgot-success">{success}</p>}
+        {/* ===== Modo "reset": poner contraseña nueva ===== */}
+        {isReset && !verifying && !success && !error && (
+          <form onSubmit={handleSubmit}>
 
-          <button
-            type="submit"
-            className="forgot-button"
-            disabled={loading}
-          >
-            {loading ? "Enviando..." : "Enviar enlace"}
-          </button>
+            <input
+              type="password"
+              placeholder="Nueva contraseña (mín. 8 caracteres)"
+              className="forgot-input"
+              value={password}
+              onChange={handlePasswordChange}
+            />
 
-        </form>
+            <input
+              type="password"
+              placeholder="Confirmar nueva contraseña"
+              className="forgot-input"
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
+            />
+
+            <button
+              type="submit"
+              className="forgot-button"
+              disabled={loading}
+            >
+              {loading ? "Guardando..." : "Guardar nueva contraseña"}
+            </button>
+
+          </form>
+        )}
+
+        {/* ===== Modo "request": pedir el mail de recuperación ===== */}
+        {!isReset && (
+          <form onSubmit={handleSubmit}>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Correo electrónico"
+              className="forgot-input"
+              value={email}
+              onChange={handleChange}
+            />
+
+            {error && <p className="forgot-error">{error}</p>}
+            {success && <p className="forgot-success">{success}</p>}
+
+            <button
+              type="submit"
+              className="forgot-button"
+              disabled={loading}
+            >
+              {loading ? "Enviando..." : "Enviar enlace"}
+            </button>
+
+          </form>
+        )}
+
+        {isReset && (error || success) && (
+          <>
+            {error && <p className="forgot-error">{error}</p>}
+            {success && <p className="forgot-success">{success}</p>}
+          </>
+        )}
 
         <button
           className="forgot-link"

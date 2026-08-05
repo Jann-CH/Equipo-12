@@ -6,6 +6,7 @@ import taskRoutes from "./routes/taskRoutes.js";
 import contentRoutes from "./routes/contentRoutes.js";
 import youtubeRoutes from "./routes/youtubeRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import reminderRoutes from "./routes/reminderRoutes.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/content", contentRoutes);
 app.use("/api/youtube", youtubeRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/reminders", reminderRoutes);
 
 app.use((req, res) => res.status(404).json({ message: "Ruta no encontrada." }));
 

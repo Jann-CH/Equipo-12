@@ -1,12 +1,12 @@
 import { Play } from "lucide-react";
 
-export function VideoCard({ video }) {
+export function VideoCard({ video, onPlay, isActive }) {
   return (
-    <a
-      href={video.url}
-      target="_blank"
-      rel="noreferrer"
-      className="flex gap-3 bg-white rounded-xl border border-gray-100 p-3 hover:shadow-sm transition-shadow"
+    <button
+      onClick={() => onPlay(video)}
+      className={`flex gap-3 bg-white rounded-xl border p-3 hover:shadow-sm transition-shadow text-left w-full ${
+        isActive ? "border-[#186875] ring-1 ring-[#186875]/30" : "border-gray-100"
+      }`}
     >
       <div className="relative w-28 h-20 rounded-lg overflow-hidden shrink-0 bg-gray-100">
         {video.thumbnail && (
@@ -21,6 +21,6 @@ export function VideoCard({ video }) {
         <p className="text-sm font-medium text-gray-900 line-clamp-2">{video.title}</p>
         <p className="text-xs text-gray-400 mt-1 truncate">{video.channelTitle}</p>
       </div>
-    </a>
+    </button>
   );
 }

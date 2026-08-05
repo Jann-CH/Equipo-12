@@ -35,6 +35,7 @@ function AppRoutes() {
         <Route path="/registro" element={<PublicRoute><Register /></PublicRoute>} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/recuperar-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
+        <Route path="/reset-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
 
         {/* Onboarding inicial (solo la primera vez, después de registrarse): SIN navbar */}
         <Route element={<ProtectedRoute><OnboardingLayout /></ProtectedRoute>}>

@@ -3,6 +3,13 @@ const CATEGORY_QUERIES = {
   Productividad: "productividad y organización del tiempo",
   Motivación: "motivación para crear hábitos",
   Bienestar: "bienestar y mindfulness para estudiantes",
+  // Mismos valores que se pueden elegir en /intereses durante el onboarding
+  Ciencia: "ciencia curiosidades y divulgación",
+  Tecnología: "tecnología e innovación explicada fácil",
+  Historia: "historia curiosidades y documentales cortos",
+  Arte: "arte y creatividad inspiración",
+  Literatura: "literatura y hábito de lectura",
+  Naturaleza: "naturaleza y curiosidades del mundo",
 };
 
 export async function searchVideos({ category, interests }) {
